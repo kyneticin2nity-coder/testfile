@@ -105,7 +105,25 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     perspective: 1000px;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  .ad-container {
+    margin: 3rem 0;
+    text-align: center;
+    background: var(--card-bg);
+    border: 1px dashed var(--card-border);
+    border-radius: 10px;
+    padding: 1rem;
+    overflow: hidden;
+  }
+
+  .ad-label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
   }
 
   .contact-section {
