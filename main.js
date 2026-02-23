@@ -27,12 +27,12 @@ class EffectCard extends HTMLElement {
       <style>
         :host {
           display: block;
-          background: rgba(255, 255, 255, 0.05);
+          background: var(--card-bg, rgba(255, 255, 255, 0.05));
           border-radius: 15px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid var(--card-border, rgba(255, 255, 255, 0.1));
           backdrop-filter: blur(10px);
           padding: 2rem;
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, border 0.3s ease;
           box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
         :host(:hover) {
@@ -42,10 +42,12 @@ class EffectCard extends HTMLElement {
         h3 {
           margin: 0;
           font-size: 1.5rem;
-          color: #f0f0f0;
+          color: var(--text-color, #f0f0f0);
+          transition: color 0.3s ease;
         }
         p {
-          color: #a0a0a0;
+          color: var(--text-muted, #a0a0a0);
+          transition: color 0.3s ease;
         }
       </style>
       <h3>${title}</h3>
@@ -78,6 +80,7 @@ class EffectCard extends HTMLElement {
 customElements.define('effect-card', EffectCard);
 
 const effectsGrid = document.getElementById('effects-grid');
+const themeToggle = document.getElementById('theme-toggle');
 
 function initializeEffects() {
   effects.forEach(effect => {
@@ -88,5 +91,21 @@ function initializeEffects() {
   });
 }
 
-// Initialize the effects grid on page load
-document.addEventListener('DOMContentLoaded', initializeEffects);
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    initializeEffects();
+    initTheme();
+});

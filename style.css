@@ -2,17 +2,39 @@
 
 @layer base {
   :root {
+    /* Base Colors - Default Dark */
+    --bg-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --text-muted: oklch(80% 0.1 260);
+    --hero-bg-start: #1b2735;
+    --hero-bg-end: #090a0f;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.1);
+    
+    /* Glow/Accent Colors */
     --glow-color: oklch(75% 0.25 260);
     --glow-spread-color: oklch(60% 0.25 260 / 20%);
     --enhanced-glow-color: oklch(85% 0.3 260);
     --card-glow-color: oklch(80% 0.3 260 / 60%);
   }
 
+  [data-theme="light"] {
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --text-muted: #495057;
+    --hero-bg-start: #e9ecef;
+    --hero-bg-end: #ced4da;
+    --card-bg: rgba(0, 0, 0, 0.05);
+    --card-border: rgba(0, 0, 0, 0.1);
+    --card-glow-color: oklch(60% 0.2 260 / 30%);
+  }
+
   body {
     font-family: "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    background-color: #1a1a1a;
-    color: #f0f0f0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     margin: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuOCIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDIiLz48L3N2Zz4=');
@@ -26,9 +48,31 @@
     justify-content: center;
     text-align: center;
     height: 50vh;
-    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    background: radial-gradient(ellipse at bottom, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
     overflow: hidden;
     position: relative;
+    transition: background 0.3s ease;
+  }
+
+  .theme-toggle-container {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  .theme-toggle {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+  }
+
+  .theme-toggle:hover {
+    background: var(--card-border);
   }
 
   .hero-content h1 {
@@ -42,7 +86,7 @@
 
   .hero-content p {
     font-size: 1.5rem;
-    color: oklch(80% 0.1 260);
+    color: var(--text-muted);
   }
 
   @keyframes shine {
@@ -61,20 +105,5 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     perspective: 1000px;
-  }
-
-  effect-card {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 2rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  }
-
-  effect-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 20px 5px var(--card-glow-color);
   }
 }
