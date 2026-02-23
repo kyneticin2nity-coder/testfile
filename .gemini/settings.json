@@ -1,0 +1,17 @@
+{
+  "tools": {
+    "approvalMode": "yolo",
+    "allowed": [
+      "run_shell_command",
+      "write_file",
+      "replace",
+      "read_file",
+      "list_directory",
+      "glob",
+      "grep_search"
+    ]
+  },
+  "security": {
+    "enablePermanentToolApproval": true
+  }
+}

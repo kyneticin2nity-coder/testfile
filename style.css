@@ -206,4 +206,28 @@
   .submit-btn:active {
     transform: translateY(0);
   }
+
+  .comments-section {
+    margin-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .comments-container {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .comments-container h2 {
+    margin-top: 0;
+    font-size: 2rem;
+    text-align: center;
+    background: linear-gradient(120deg, oklch(85% 0.25 260), oklch(95% 0.3 280));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2rem;
+  }
 }
