@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Tilt Effect: Interactive UI | Visual Effects Showcase</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5062655610204222"
+     crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="post-style.css">
+</head>
+<body>
+    <header class="hero" style="height: 30vh;">
+        <nav class="top-nav">
+            <a href="../index.html">Home</a>
+            <a href="../about.html">About</a>
+            <a href="../privacy.html">Privacy</a>
+        </nav>
+        <div class="hero-content">
+            <h1>3D Tilt Effect Explained</h1>
+            <p>Creating interactive perspective with CSS Transforms</p>
+        </div>
+    </header>
+
+    <main class="container post-content">
+        <article>
+            <h2>Adding Dimension to Flat UI</h2>
+            <p>The 3D Tilt effect is a powerful way to add a tactile feel to web interfaces. By responding to the user's mouse movement, elements appear to physically exist in a 3D space, enhancing engagement and making interactions feel more responsive.</p>
+
+            <div class="ad-container">
+                <span class="ad-label">ADVERTISEMENT</span>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-5062655610204222"
+                     data-ad-slot="default"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <h2>How It Works</h2>
+            <p>This effect combines `perspective` on the parent container with `rotateX` and `rotateY` transforms on the child element. JavaScript calculates the cursor's position relative to the element's center and applies the appropriate rotation values.</p>
+
+            <h3>The Math Behind the Magic</h3>
+            <p>We normalize the mouse coordinates (from 0 to 1) and then map them to a rotation range (e.g., -15deg to +15deg). The `perspective` property determines the intensity of the 3D effect; smaller values create more dramatic distortion.</p>
+
+            <h3>Code Snippet (JavaScript)</h3>
+            <pre><code>
+const rotateX = (y / height - 0.5) * -30;
+const rotateY = (x / width - 0.5) * 30;
+element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            </code></pre>
+
+            <h2>Use Cases</h2>
+            <ul>
+                <li>Product Showcases: Allow users to "inspect" items.</li>
+                <li>Hero Headers: Add subtle motion to catch attention.</li>
+                <li>Interactive Cards: Provide feedback on hover states.</li>
+            </ul>
+        </article>
+        
+        <div id="disqus_thread"></div>
+    </main>
+
+    <script>
+        var disqus_config = function () {
+            this.page.url = window.location.href;
+            this.page.identifier = window.location.pathname;
+        };
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://test-nq7s73ntpv.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+</body>
+</html>

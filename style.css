@@ -34,6 +34,7 @@
     background-color: var(--bg-color);
     color: var(--text-color);
     margin: 0;
+    line-height: 1.6;
     transition: background-color 0.3s ease, color 0.3s ease;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -42,6 +43,28 @@
 }
 
 @layer components {
+  .top-nav {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2rem;
+    z-index: 100;
+  }
+
+  .top-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+  }
+
+  .top-nav a:hover {
+    opacity: 1;
+  }
+
   .hero {
     display: flex;
     align-items: center;
@@ -53,6 +76,30 @@
     position: relative;
     transition: background 0.3s ease;
   }
+  
+  .post-content {
+      max-width: 800px;
+      margin: 4rem auto;
+      background: var(--card-bg);
+      padding: 3rem;
+      border-radius: 20px;
+      border: 1px solid var(--card-border);
+  }
+
+  .post-content article h2 {
+      margin-top: 2rem;
+      color: var(--glow-color);
+  }
+
+  .post-content pre {
+      background: #000;
+      padding: 1.5rem;
+      border-radius: 10px;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+  }
+  
+  /* ... existing styles ... */
 
   .theme-toggle-container {
     position: absolute;

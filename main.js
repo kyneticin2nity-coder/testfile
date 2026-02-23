@@ -79,9 +79,10 @@ class EffectCard extends HTMLElement {
 
 customElements.define('effect-card', EffectCard);
 
-const effectsGrid = document.getElementById('effects-grid');
+// const effectsGrid = document.getElementById('effects-grid');
 const themeToggle = document.getElementById('theme-toggle');
 
+/*
 function initializeEffects() {
   effects.forEach(effect => {
     const card = document.createElement('effect-card');
@@ -90,6 +91,7 @@ function initializeEffects() {
     effectsGrid.appendChild(card);
   });
 }
+*/
 
 function initTheme() {
     const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -106,6 +108,6 @@ function initTheme() {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
-    initializeEffects();
+    // initializeEffects();
     initTheme();
 });
